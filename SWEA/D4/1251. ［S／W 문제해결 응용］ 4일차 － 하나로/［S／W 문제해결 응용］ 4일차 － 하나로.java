@@ -35,7 +35,7 @@ class Solution
 			for(int i = 0; i < n; i++) {
 				for(int j = 0; j < n; j++) {
 					if(i == j) {
-						edges.add(new double[] {i,j,Double.MAX_VALUE});
+						continue;
 					}
 					else edges.add(new double[] {i,j, Math.pow(xs[j]-xs[i],2)+Math.pow(ys[j]-ys[i],2)});
 				}
