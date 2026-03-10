@@ -33,18 +33,18 @@ class Solution
 			double l = Double.parseDouble(br.readLine());
 			double ans = 0;
 			for(int i = 0; i < n; i++) {
-				for(int j = 0; j < n; j++) {
-					if(i == j) {
-						continue;
-					}
-					else edges.add(new double[] {i,j, Math.pow(xs[j]-xs[i],2)+Math.pow(ys[j]-ys[i],2)});
+				for(int j = i+1; j < n; j++) {
+                    edges.add(new double[] {i,j, Math.pow(xs[j]-xs[i],2)+Math.pow(ys[j]-ys[i],2)});
 				}
 			}
 			Collections.sort(edges, (a,b)-> Double.compare(a[2], b[2]));
-			for(int i = 0; i < edges.size(); i++) {
+			int cnt = 0;
+            for(int i = 0; i < edges.size(); i++) {
 				if(union(edges.get(i)[0],edges.get(i)[1])) {
 					ans += edges.get(i)[2];
-				}
+					cnt++;
+                }
+                if(cnt == n-1) break;
 			}
 			System.out.println("#"+test_case+" "+Math.round(ans * l) );
 		}
